@@ -5,8 +5,7 @@ const total=document.getElementById("total");
 const select=document.getElementById("movie");
 const film =document.getElementById("film");
 const seat=document.getElementsByClassName("seat")
-const seats=document.querySelectorAll(".seat:not(.occupied)")
-
+const seats=document.querySelectorAll(".container .seat:not(.occupied)")  // *** (.container) yapmamız gerekiyor bunu yazmazsak "showcase" class'ına sahip div elementinin altındaki "seat" ve "seat selected" classlarına sahip elementleri de alıyor . o yüzden index numarası 2'den başlıyor.
 
 
 container.addEventListener("click",(e)=>{
@@ -16,11 +15,12 @@ container.addEventListener("click",(e)=>{
         // console.log(e.target);
 
         e.target.classList.toggle("selected");
-        calculateTotal();
+        
       
 
         
     }
+    calculateTotal();
 })
 
 select.addEventListener("change",(e)=>{
@@ -34,7 +34,7 @@ function calculateTotal(){
     const selectedSeats=container.querySelectorAll(".seat.selected");
 
     // console.log(seats);
-    console.log(selectedSeats);
+    // console.log(selectedSeats);
 //////////////
     const selectedSeatArr=[];
     const seatArr=[];
@@ -47,8 +47,11 @@ function calculateTotal(){
         seatArr.push(seat);
 
     })
-    //spread ile yapablrz
+    console.log(selectedSeatArr);
+    console.log(seatArr);
+        //spread ile yapablrz
 //////////////////////////////////
+
 
     let selectedSeatIndex=selectedSeatArr.map((seat)=>{
         return seatArr.indexOf(seat);
